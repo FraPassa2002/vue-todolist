@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+
+   <div id="app">
+        <div>
+            <form @submit.prevent="addTodo()">
+                <input type="text" required minlength="1" v-model="newTodo" placeholder="inserisci il nuovo task...">
+
+                <button @click="addTodo()">
+                    Aggiungi
+                </button>
+            </form>
+        </div>
+
+        <ul>
+            <li @click="invertDone(i)" v-for="(todo, i) in todos" :class="todo.done == true ? 'todo-done' : ''">
+                {{ todo.text }}
+
+                <button @click.stop="removeTodo(i)">
+                    x
+                </button>
+            </li>
+        </ul>
+   </div>
+
+    <!-- Vue -->
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <!-- Js -->
+    <script src="./js/scripts.js"></script>
+</body>
+
+</html>
